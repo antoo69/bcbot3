@@ -40,6 +40,14 @@ class Database:
         all_users = self.col.find({})
         return all_users
 
+    async def total_chats_count(self):
+        count = await self.col.count_documents({})
+        return count
+
+    async def get_all_chats(self):
+        all_chats = self.col.find({})
+        return all_chats
+
     async def delete_user(self, user_id):
         await self.col.delete_many({"id": int(user_id)})
 
