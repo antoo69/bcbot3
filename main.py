@@ -101,6 +101,17 @@ async def sts(c, m):
         quote=True
     )
 
+@Bot.on_message(filters & filters.command("gstats"))
+async def sts(c, m):
+    if m.from_user.id not in AUTH_USERS:
+        await m.delete()
+        return
+    await m.reply_text(
+        text=f"**Total Users in Database 📂:** `{await db.total_chats_count()}`\n\n**:",
+        parse_mode="Markdown",
+        quote=True
+    )
+
 
 @Bot.on_message(filters.private & filters.command("ban_user"))
 async def ban(c, m):
