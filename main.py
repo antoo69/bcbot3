@@ -106,8 +106,9 @@ async def sts(c, m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
         return
+    total = len(await db.total_chats_count())
     await m.reply_text(
-        text=f"**Total Users in Database 📂:** `{await db.total_chats_count()}`\n\n**:",
+        text=f"<b>Total Users in Database 📂: </b> <code>{total}</code>",
         parse_mode="Markdown",
         quote=True
     )
