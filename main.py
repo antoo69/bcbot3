@@ -108,7 +108,7 @@ async def sts(c, m):
         return
     total = len(await db.total_chats_count())
     await m.reply_text(
-        text=f"<b>Total Users in Database 📂: </b> <code>{total}</code>",
+        text=f"<b>Total Users in Database 📂: ** `{await db.total_chats_count()}`\n\n**:",
         parse_mode="Markdown",
         quote=True
     )
