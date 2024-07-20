@@ -101,7 +101,7 @@ async def sts(c, m):
         quote=True
     )
 
-@Bot.on_message(filters & filters.command("gstats"))
+@Bot.on_message(filters.txt & filters.command("gstats"))
 async def sts(c, m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
