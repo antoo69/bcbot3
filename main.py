@@ -10,6 +10,7 @@ import config
 from handlers.broadcast import broadcast
 from handlers.check_user import handle_user_status
 from handlers.database import Database
+from telegram.ext import CommandHandler, MessageHandler, Filters
 
 LOG_CHANNEL = config.LOG_CHANNEL
 AUTH_USERS = config.AUTH_USERS
@@ -101,7 +102,7 @@ async def sts(c, m):
         quote=True
     )
 
-@Bot.on_message(filters.txt & filters.command("gstats"))
+@bot.on_message(MessageHandler(Filters.text & Filters.command("gstats"), callback_function))
 async def sts(c, m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
